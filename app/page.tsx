@@ -43,12 +43,12 @@ export default function Home() {
       const { data, error }: any = await supabase.from("guestbook").insert([
         {
           message: userMsg,
-          user_id: session?.user?.id,
           username: session?.user?.name,
         },
       ]);
       setUserMsg("");
       getGuestBookData();
+      console.log(session);
     } catch (error) {
       console.log(error);
     }
@@ -82,7 +82,7 @@ export default function Home() {
 
             <button
               onClick={() => signOut()}
-              className="bg-primary text-white flex flex-row gap-3 items-center p-3 rounded-md w-[250px] justify-center"
+              className="bg-black text-white flex flex-row gap-3 items-center p-3 rounded-md w-[250px] justify-center"
             >
               Sign out
             </button>
